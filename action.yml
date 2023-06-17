@@ -1,0 +1,47 @@
+name: Package minecraft world
+author: Aksiome
+description: Github action to automatically prepare a minecraft java world for release.
+
+branding:
+  icon: package
+  color: green
+
+inputs:
+  source:
+    description: The world directory to compress
+    required: true
+  target:
+    description: The target zip file
+    required: true
+  config:
+    description: The mcwpack config file
+    required: true
+  version:
+    description: The version of mcwpack to install
+    required: true
+    default: "latest"
+
+outputs:
+  archive:
+    value: ${{ steps.mcwpack.outputs.archive }}
+    description: Path to the archive containing the compressed world
+
+runs:
+  using: composite
+  steps:
+    - id: mcwpack
+      shell: bash
+      env:
+        MCWPACK_SOURCE: ${{ inputs.source }}
+        MCWPACK_TARGET: ${{ inputs.target }}
+        MCWPACK_CONFIG: ${{ inputs.config }}
+        MCWPACK_VERSION: ${{ inputs.version }}
+      run: |
+        mkdir ~/.mcwpack
+        curl -LJO https://github.com/aksiome/mcwpack/releases/${MCWPACK_VERSION}/download/mcwpack-linux.tar.gz
+        tar -xzf mcwpack-linux.tar.gz -C ~/.mcwpack
+        if [[ $MCWPACK_TARGET != *.zip ]]; then
+          export MCWPACK_TARGET="${MCWPACK_TARGET}.zip"
+        fi
+        ~/.mcwpack/mcwpack $MCWPACK_SOURCE -c $MCWPACK_CONFIG -z $MCWPACK_TARGET
+        echo "archive=$(echo $MCWPACK_TARGET)" >> $GITHUB_OUTPUT
