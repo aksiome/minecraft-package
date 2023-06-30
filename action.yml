@@ -16,10 +16,11 @@ inputs:
   config:
     description: The mcwpack config file
     required: true
+    default: mcwpack.yaml
   version:
     description: The version of mcwpack to install
     required: true
-    default: "latest"
+    default: latest
 
 outputs:
   archive:
