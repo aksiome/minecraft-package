@@ -58,6 +58,9 @@ accepted_entries:
 ```
 
 ## Examples
+> ⚠️ Most of these examples will require the contents read and write permissions.
+
+
 Automatically create a release. Uses [`softprops/action-gh-release`](https://github.com/softprops/action-gh-release):
 ```yml
 name: Release
