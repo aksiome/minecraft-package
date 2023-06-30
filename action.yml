@@ -43,5 +43,5 @@ runs:
         if [[ $MCWPACK_TARGET != *.zip ]]; then
           export MCWPACK_TARGET="${MCWPACK_TARGET}.zip"
         fi
-        ~/.mcwpack/mcwpack $MCWPACK_SOURCE -c $MCWPACK_CONFIG -z $MCWPACK_TARGET
+        ~/.mcwpack/mcwpack $MCWPACK_SOURCE --noprompt -c $MCWPACK_CONFIG -z $MCWPACK_TARGET
         echo "archive=$(echo $MCWPACK_TARGET)" >> $GITHUB_OUTPUT
