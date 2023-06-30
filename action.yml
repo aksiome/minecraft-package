@@ -1,10 +1,10 @@
-name: Package minecraft world
+name: Minecraft package world
 author: Aksiome
 description: Github action to automatically prepare a minecraft java world for release.
 
 branding:
   icon: package
-  color: green
+  color: purple
 
 inputs:
   source:
