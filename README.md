@@ -104,5 +104,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: My World
-          path: ${{ steps.compile.outputs.archive }}
+          path: ${{ steps.package.outputs.archive }}
 ```
