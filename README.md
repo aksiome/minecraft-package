@@ -1,4 +1,4 @@
-# Package Minecraft Java World
+# Minecraft World Packager
 
 [![Source Code](https://img.shields.io/badge/source-aksiome/minecraft--package-4078C0.svg?style=flat-square&labelColor=555555&logo=github)](https://github.com/aksiome/minecraft-package)
 [![Software License](https://img.shields.io/github/license/aksiome/minecraft-package?style=flat-square)](https://github.com/aksiome/minecraft-package/blob/master/LICENSE)
@@ -29,6 +29,11 @@ Default `mcwpack.yaml`:
 name: null
 # Directory name inside the archive
 dirname: null
+# Additional files to pack inside the archive (only when using the zip option)
+# extra_files:
+#   - Readme.md
+#   - source: ./../anywhere/server.properties
+#     target: server/server.properties
 # Resourcepack directory (or zip archive)
 resourcepack: null
 # Reset player data in level.dat
